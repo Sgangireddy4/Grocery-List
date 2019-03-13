@@ -4,20 +4,25 @@
   <div class="row">
       <div class="col-xs-6 col-md-4">
           <div class="input-group">
-              <input type="text" placeholder="enter grocery items" id="txtSearch" [formControl] = 'search'/>
+              <input type="text" placeholder="enter grocery items" id="txtSearch" [value]="task" (input)="task = $event.target.value">
               <div class="input-group-btn">
-                  <button class="btn btn-primary" type="button" (click)= 'onClick()'>
-            <div><span class="glyphicon glyphicon-ok"></span></div>
-            </button>
+                  <button class="btn btn-primary" type="button" (click)= 'Add()'> Add
+                    <span class="glyphicon glyphicon-ok-circle"></span>
+                </button>
               </div>
           </div>
+
+          <br>
+        <ul class="list-group">
+            <li *ngFor="let task of tasks" class="list-group-item">
+                <span> {{ task.name }} </span>
+            </li>
+        </ul>
+
+        <br>
+        <button class="btn btn-primary" type="button" (click)= 'Clear()'> Clear </button>
       </div>
   </div>
 
-  <br>
-  <ul class="list-group">
-    <li *ngFor="let task of tasks" class="list-group-item">
-        <span> {{ task.name }} </span>
-    </li>
-</ul>
+  
 
